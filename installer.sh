@@ -25,7 +25,7 @@ echo "mounting $rootp to /mnt"
 mount $rootp /mnt
 echo "mounting home partition to /home"
 mount /dev/sda4 /home
-vi /etc/pacman.d/mirrorlist
+vim /etc/pacman.d/mirrorlist
 echo "installing base"
 pacstrap /mnt base
 echo "generating fstab"
