@@ -37,6 +37,8 @@ pacman -S --noconfirm \
 	mpv mpd ncmpcpp beets feh \
 	firefox pcmanfm gvfs lxappearance imagemagick ffmpeg ffmpegthumbnailer \
 	libnotify youtube-dl zathura git krita
+
+systemctl enable dhcpcd.service
 echo "installing grub"
 pacman -S --noconfirm grub
 grub-install /dev/sda
