@@ -8,7 +8,7 @@ while true; do
 	read rootp
 	printf "install root on /dev/sda$rootp ? (y/n) "
 	read rootp
-	if [[ "$answer" == "y" ]]; then
+	if [[ "$rootp" == "y" ]]; then
 		break
 	else
 		echo ' '
@@ -27,7 +27,7 @@ echo "mounting home partition to /home"
 mount /dev/sda4 /home
 vi /etc/pacman.d/mirrorlist
 echo "installing base"
-pacstrap /mnt base base-devel
+pacstrap /mnt base
 echo "generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
@@ -72,7 +72,7 @@ for fol in /home/kim/Documents/arch_installer/icons/*; do
 done
 
 pacman -S --noconfirm \
-	xorg nvidia-dkms sudo \
+	xorg nvidia-dkms sudo base-devel \
 	pulseaudio pavucontrol awesome \
 	mpv mpd ncmpcpp beets mpdscribble feh \
 	firefox pcmanfm gvfs lxappearance imagemagick ffmpeg ffmpegthumbnailer \
