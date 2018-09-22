@@ -30,7 +30,8 @@ echo "installing base"
 pacstrap /mnt base
 echo "generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt<<OEF
+
+arch-chroot /mnt /bin/bash <<OEF
 echo "setting up locale.gen"
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo en_US ISO-8859-1 >> /etc/locale.gen
