@@ -32,6 +32,7 @@ pacstrap /mnt base
 echo "generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 
+wget https://raw.githubusercontent.com/frogsson/arch/master/installer2.sh
 cp installer2.sh /mnt/installer2.sh
 chmod +x /mnt/installer2.sh
 arch-chroot /mnt /mnt/installer2.sh
