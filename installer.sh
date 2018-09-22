@@ -7,8 +7,8 @@ while true; do
 	printf "root partition: "
 	read rootp
 	printf "install root on /dev/sda$rootp ? (y/n) "
-	read rootp
-	if [[ "$rootp" == "y" ]]; then
+	read answer
+	if [[ "$answer" == "y" ]]; then
 		break
 	else
 		echo ' '
@@ -30,7 +30,7 @@ echo "installing base"
 pacstrap /mnt base
 echo "generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
+arch-chroot /mnt<<OEF
 echo "setting up locale.gen"
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo en_US ISO-8859-1 >> /etc/locale.gen
@@ -93,3 +93,4 @@ read usrname
 useradd -g wheel $usrname
 echo "password for $usrname"
 passwd $usrname
+EOF
