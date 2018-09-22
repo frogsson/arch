@@ -33,6 +33,6 @@ echo "generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 
 wget https://raw.githubusercontent.com/frogsson/arch/master/installer2.sh
-cp installer2.sh /mnt/installer2.sh
+cp rootuser.sh /mnt/rootuser.sh
 chmod +x /mnt/rootuser.sh
 arch-chroot /mnt ./rootuser.sh
