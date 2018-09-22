@@ -1,3 +1,5 @@
+ln -sf /usr/share/Europe/Stockholm /etc/localtime
+hwclock --systohc
 echo "setting up locale.gen"
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo en_US ISO-8859-1 >> /etc/locale.gen
@@ -14,9 +16,11 @@ echo "enabling multilib arch"
 echo [multilib] >> /etc/pacman.conf
 echo Include = /etc/pacman.d/mirrorlist >> /etc/pacman.conf
 pacman -Syu --noconfirm
-echo replacing linux kernel with linux-zen 
-pacman -Rs --noconfirm linux
-pacman -S --noconfirm linux-zen linux-zen-headers
+
+#echo replacing linux kernel with linux-zen 
+#pacman -Rs --noconfirm linux
+#pacman -S --noconfirm linux-zen linux-zen-headers
+
 mkdir -p /etc/X11/xorg.conf.d/
 cp -v /home/kim/Documents/arch_installer/configs/20-nvidia.conf /etc/X11/xorg.conf.d/
 cp -v /home/kim/Documents/arch_installer/configs/50-mouse-acceleration.conf /etc/X11/xorg.conf.d/
@@ -25,26 +29,49 @@ cp -v /home/kim/Documents/arch_installer/configs/99-sysctl.conf /etc/sysctl.d/
 cp -v /home/kim/Documents/arch_installer/configs/grub /etc/default/
 mkdir -p /usr/lib/modprobe.d
 echo blacklist nouveau > /usr/lib/modprobe.d/nvidia.conf
+cp -v /home/kim/Documents/arch_installer/configs/profile /etc
+
 for fol in /home/kim/Documents/arch_installer/themes/*; do
-	cp -r -v $fol /usr/share/themes/
+	echo "copying $fol" to themes
+	cp -r $fol /usr/share/themes/
 done
+
 for fol in /home/kim/Documents/arch_installer/icons/*; do
-	cp -r -v $fol /usr/share/icons/
+	echo "copying $fol" to icons
+	cp -r $fol /usr/share/icons/
 done
+
 pacman -S --noconfirm \
 	xorg nvidia-dkms xorg-xinit sudo base-devel dhcpcd \
-	pulseaudio pavucontrol awesome \
-	mpv mpd ncmpcpp beets feh \
+	pulseaudio pavucontrol awesome rtorrent \
+	mpv mpd ncmpcpp beets feh neovim \
 	firefox pcmanfm gvfs lxappearance imagemagick ffmpeg ffmpegthumbnailer \
 	libnotify youtube-dl zathura git krita
 
 systemctl enable dhcpcd.service
-echo "installing grub"
+systemctl enable mpd.service
+
 pacman -S --noconfirm grub
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
-echo "settings up sudoers"
 cp -v /home/kim/Documents/arch_installer/configs/sudoers /etc/
+
+## ST
+git clone git://git.suckless.org/st
+cp /home/kim/Documents/arch_installer/configs/stconf.h ./st/config.h
+cd st
+make clean install
+cd .. 
+rm -r st
+
+## YAY
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -cs
+pacman -U yay-8.1115-1-x86_64.pkg.tar.xz
+cd ..
+rm -r yay
+
 echo "root password: "
 passwd
 printf "username: "
@@ -52,4 +79,5 @@ read usrname
 useradd -G wheel $usrname
 echo "password for $usrname"
 passwd $usrname
+echo "changing owner of home folder"
 chown -R $username:$username /home/$username
