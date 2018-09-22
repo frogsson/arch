@@ -32,7 +32,7 @@ for fol in /home/kim/Documents/arch_installer/icons/*; do
 	cp -r -v $fol /usr/share/icons/
 done
 pacman -S --noconfirm \
-	xorg nvidia-dkms xorg-xinit sudo base-devel dpcpcd \
+	xorg nvidia-dkms xorg-xinit sudo base-devel dhcpcd \
 	pulseaudio pavucontrol awesome \
 	mpv mpd ncmpcpp beets feh \
 	firefox pcmanfm gvfs lxappearance imagemagick ffmpeg ffmpegthumbnailer \
@@ -50,4 +50,4 @@ read usrname
 useradd -G wheel $usrname
 echo "password for $usrname"
 passwd $usrname
-chroot -R $username:$username /home/$username
+chown -R $username:$username /home/$username
