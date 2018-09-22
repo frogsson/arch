@@ -27,8 +27,8 @@ cp -v /home/kim/Documents/arch_installer/configs/50-mouse-acceleration.conf /etc
 mkdir -p /etc/sysctl.d/
 cp -v /home/kim/Documents/arch_installer/configs/99-sysctl.conf /etc/sysctl.d/
 cp -v /home/kim/Documents/arch_installer/configs/grub /etc/default/
-mkdir -p /usr/lib/modprobe.d
-echo blacklist nouveau > /usr/lib/modprobe.d/nvidia.conf
+#mkdir -p /usr/lib/modprobe.d
+#echo blacklist nouveau > /usr/lib/modprobe.d/nvidia.conf
 cp -v /home/kim/Documents/arch_installer/configs/profile /etc
 
 for fol in /home/kim/Documents/arch_installer/themes/*; do
