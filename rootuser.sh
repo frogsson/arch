@@ -42,7 +42,7 @@ for fol in /home/kim/Documents/arch_installer/icons/*; do
 done
 
 pacman -S --noconfirm \
-	xorg nvidia-dkms xorg-xinit sudo base-devel dhcpcd \
+	xorg nvidia xorg-xinit sudo base-devel dhcpcd \
 	pulseaudio pavucontrol awesome rtorrent \
 	mpv mpd ncmpcpp beets feh neovim \
 	firefox pcmanfm gvfs lxappearance imagemagick ffmpeg ffmpegthumbnailer \
