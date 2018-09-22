@@ -32,7 +32,7 @@ pacstrap /mnt base
 echo "generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-wget https://raw.githubusercontent.com/frogsson/arch/master/installer2.sh
+wget https://raw.githubusercontent.com/frogsson/arch/master/rootuser.sh
 cp rootuser.sh /mnt/rootuser.sh
 chmod +x /mnt/rootuser.sh
 arch-chroot /mnt ./rootuser.sh
