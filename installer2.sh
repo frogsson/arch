@@ -34,9 +34,9 @@ done
 pacman -S --noconfirm \
 	xorg nvidia-dkms sudo base-devel \
 	pulseaudio pavucontrol awesome \
-	mpv mpd ncmpcpp beets mpdscribble feh \
+	mpv mpd ncmpcpp beets feh \
 	firefox pcmanfm gvfs lxappearance imagemagick ffmpeg ffmpegthumbnailer \
-	libnotify youtube-dl unar zathura git krita
+	libnotify youtube-dl zathura git krita
 echo "installing grub"
 pacman -S --noconfirm grub
 grub-install /dev/sda
@@ -47,6 +47,6 @@ echo "root password: "
 passwd
 printf "username: "
 read usrname
-useradd -g wheel $usrname
+useradd -G wheel $usrname
 echo "password for $usrname"
 passwd $usrname
