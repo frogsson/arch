@@ -24,14 +24,15 @@ swapon /dev/sda2
 echo "mounting $rootp to /mnt"
 mount $rootp /mnt
 echo "mounting home partition to /home"
-mount /dev/sda4 /home
+mkdir -p /mnt/home
+mount /dev/sda4 /mnt/home
 vim /etc/pacman.d/mirrorlist
 echo "installing base"
 pacstrap /mnt base
 echo "generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt /bin/bash <<OEF
+arch-chroot /mnt /bin/bash <<EOF
 echo "setting up locale.gen"
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo en_US ISO-8859-1 >> /etc/locale.gen
@@ -48,12 +49,11 @@ echo 127.0.1.1 noisy.localdomain noisy >> /etc/hosts
 echo "enabling multilib arch"
 echo [multilib] >> /etc/pacman.conf
 echo Include = /etc/pacman.d/mirrorlist >> /etc/pacman.conf
+pacman -Syu --noconfirm
 
 echo replacing linux kernel with linux-zen 
 pacman -Rs --noconfirm linux
-pacman -S --noconfirm linux-zen
-echo "generating initramfs"
-mkinitcpio -p linux
+pacman -S --noconfirm linux-zen linux-zen-headers
 
 mkdir -p /etc/X11/xorg.conf.d/
 cp -v /home/kim/Documents/arch_installer/configs/20-nvidia.conf /etc/X11/xorg.conf.d/
