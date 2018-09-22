@@ -10,10 +10,10 @@ echo "setting up hosts"
 echo 127.0.0.1 localhost >> /etc/hosts
 echo ::1 localhost >> /etc/hosts
 echo 127.0.1.1 noisy.localdomain noisy >> /etc/hosts	
-#echo "enabling multilib arch"
-#echo [multilib] >> /etc/pacman.conf
-#echo Include = /etc/pacman.d/mirrorlist >> /etc/pacman.conf
-#pacman -Syu --noconfirm
+echo "enabling multilib arch"
+echo [multilib] >> /etc/pacman.conf
+echo Include = /etc/pacman.d/mirrorlist >> /etc/pacman.conf
+pacman -Syu --noconfirm
 echo replacing linux kernel with linux-zen 
 pacman -Rs --noconfirm linux
 pacman -S --noconfirm linux-zen linux-zen-headers
@@ -28,11 +28,11 @@ echo blacklist nouveau > /usr/lib/modprobe.d/nvidia.conf
 for fol in /home/kim/Documents/arch_installer/themes/*; do
 	cp -r -v $fol /usr/share/themes/
 done
-#for fol in /home/kim/Documents/arch_installer/icons/*; do
-#	cp -r -v $fol /usr/share/icons/
-#done
+for fol in /home/kim/Documents/arch_installer/icons/*; do
+	cp -r -v $fol /usr/share/icons/
+done
 pacman -S --noconfirm \
-	xorg nvidia-dkms sudo base-devel \
+	xorg nvidia-dkms xorg-xinit sudo base-devel dpcpcd \
 	pulseaudio pavucontrol awesome \
 	mpv mpd ncmpcpp beets feh \
 	firefox pcmanfm gvfs lxappearance imagemagick ffmpeg ffmpegthumbnailer \
