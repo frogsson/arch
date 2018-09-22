@@ -50,3 +50,4 @@ read usrname
 useradd -G wheel $usrname
 echo "password for $usrname"
 passwd $usrname
+chroot -R $username:$username /home/$username
