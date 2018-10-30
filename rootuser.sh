@@ -1,3 +1,9 @@
+## GOOGLE FONTS
+## https://github.com/google/fonts.git
+## NOTO FONTS
+## https://github.com/googlei18n/noto-fonts.git
+
+
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 hwclock --systohc
 
