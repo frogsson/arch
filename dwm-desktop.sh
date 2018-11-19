@@ -14,9 +14,9 @@ pacman -S --noconfirm \
 
 systemctl --user enable mpd.service
 
-mkdir -p /etc/systemd/system/getty@tty1.service.d
-cat >> /etc/systemd/system/getty@tty1.service.d/override.conf << EOL
-[Service]
-ExecStart=
-ExecStart=-/usr/bin/agetty --autologin username --noclear %I \$TERM
-EOL
+# mkdir -p /etc/systemd/system/getty@tty1.service.d
+# cat >> /etc/systemd/system/getty@tty1.service.d/override.conf << EOL
+# [Service]
+# ExecStart=
+# ExecStart=-/usr/bin/agetty --autologin username --noclear %I \$TERM
+# EOL
