@@ -136,6 +136,8 @@ cd -
 rm -r st
 # }}}
 
+echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
 echo "set root password"
 passwd
 
