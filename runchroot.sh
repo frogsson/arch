@@ -127,7 +127,6 @@ EOL
 # }}}
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
-cp -v /home/kim/Documents/arch_installer/configs/sudoers /etc/
 
 # simple terminal {{{
 git clone git://git.suckless.org/st
@@ -137,7 +136,7 @@ cd -
 rm -r st
 # }}}
 
-echo "root password: "
+echo "set root password"
 passwd
 
 printf "username: "
@@ -146,4 +145,4 @@ useradd -G wheel $usrname
 echo "password for $usrname"
 passwd $usrname
 echo "changing owner of home folder"
-chown -R $username:$username /home/$username
+chown -R $usrname:$usrname /home/$usrname
