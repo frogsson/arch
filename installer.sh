@@ -9,11 +9,11 @@ while true; do
 	printf "home partition: "
 	read homep
 
-	printf "/dev/sda$rootp /"
-	printf "/dev/sda$swapp [SWAP]"
-	printf "/dev/sda$homep /home"
+	printf "/dev/sda$rootp /\n"
+	printf "/dev/sda$swapp [SWAP]\n"
+	printf "/dev/sda$homep /home\n"
 
-	printf "does this look right? (y/n)"
+	printf "does this look right? (y/n)\n"
 
 	read answer
 
@@ -40,8 +40,8 @@ vi /etc/pacman.d/mirrorlist
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 
-wget https://raw.githubusercontent.com/frogsson/arch/master/rootuser.sh
-cp rootuser.sh /mnt/rootuser.sh
-chmod +x /mnt/rootuser.sh
+wget https://raw.githubusercontent.com/frogsson/arch/master/runchroot.sh
+cp runchroot.sh /mnt/runchroot.sh
+chmod +x /mnt/runchroot.sh
 
 arch-chroot /mnt ./runchroot.sh
