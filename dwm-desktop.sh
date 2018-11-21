@@ -1,7 +1,15 @@
 # gaymer stuff {{{
+# cat >> /etc/pacman.conf << EOF
 # echo "[multilib]
 # Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+# EOF
 # pacman -Syu --noconfirm
+
+# NEEDED PACKAGES 32 BIT WINE
+# lib32-libpulse
+# lib32-mpg123
+# lib32-nvidia-utils:wq
+
 # }}}
 
 pacman -S --noconfirm \
