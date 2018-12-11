@@ -52,10 +52,10 @@ EOL
 # }}}
 
 # sysctl.d (swappiness) {{{
-mkdir -p /etc/sysctl.d/
-cat >> /etc/sysctl.d/99-sysctl.conf << EOL
-vm.swappiness=1
-EOL
+# mkdir -p /etc/sysctl.d/
+# cat >> /etc/sysctl.d/99-sysctl.conf << EOL
+# vm.swappiness=1
+# EOL
 # }}}
 
 pacman -S --noconfirm \
@@ -68,61 +68,23 @@ systemctl enable dhcpcd.service
 
 pacman -S --noconfirm grub
 # /etc/default/grub {{{
-cat >> /etc/default/grub << EOL
-# GRUB boot loader configuration
+cat > /etc/default/grub << EOL
+GRUB_DEFAULT="saved"
 
-GRUB_DEFAULT=0
+GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash elevator=bfq"
 GRUB_CMDLINE_LINUX=""
 
-# hide grub menu
-GRUB_HIDDEN_TIMEOUT=0
-GRUB_TIMEOUT=0
-
 # Preload both GPT and MBR modules so that they are not missed
-GRUB_PRELOAD_MODULES="part_gpt part_msdos"
-
-# Uncomment to enable booting from LUKS encrypted devices
-#GRUB_ENABLE_CRYPTODISK=y
+# GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 
 # Uncomment to enable Hidden Menu, and optionally hide the timeout count
-#GRUB_HIDDEN_TIMEOUT=5
-#GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
 
-# Uncomment to use basic console
-GRUB_TERMINAL_INPUT=console
-
-# Uncomment to disable graphical terminal
-#GRUB_TERMINAL_OUTPUT=console
-
-# The resolution used on graphical terminal
-# note that you can use only modes which your graphic card supports via VBE
-# you can see them in real GRUB with the command 'vbeinfo'
-GRUB_GFXMODE=auto
-
-# Uncomment to allow the kernel use the same resolution used by grub
-GRUB_GFXPAYLOAD_LINUX=keep
-
-# Uncomment if you want GRUB to pass to the Linux kernel the old parameter
-# format "root=/dev/xxx" instead of "root=/dev/disk/by-uuid/xxx"
-#GRUB_DISABLE_LINUX_UUID=true
-
-# Uncomment to disable generation of recovery mode menu entries
-GRUB_DISABLE_RECOVERY=true
-
-# Uncomment and set to the desired menu colors.  Used by normal and wallpaper
-# modes only.  Entries specified as foreground/background.
-#GRUB_COLOR_NORMAL="light-blue/black"
-#GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
-
-# Uncomment one of them for the gfx desired, a image background or a gfxtheme
-#GRUB_BACKGROUND="/path/to/wallpaper"
-#GRUB_THEME="/path/to/gfxtheme"
-
-# Uncomment to make GRUB remember the last selection. This requires to
-# set 'GRUB_DEFAULT=saved' above.
-#GRUB_SAVEDEFAULT="true"
+# remember the last selection (requires GRUB_DEFAULT="saved")
+GRUB_SAVEDEFAULT="true"
 EOL
 # }}}
 grub-install /dev/sda
