@@ -17,8 +17,9 @@ pacman -S --noconfirm \
 	pavucontrol rtorrent \
 	mpv mpd ncmpcpp beets neovim \
 	gvfs ntfs-3g lxappearance imagemagick ffmpeg  \
-	pcmanfm ffmpegthumbnailer \
-	libnotify youtube-dl zathura krita
+	pcmanfm ffmpegthumbnailer pulseaudio \
+	libnotify youtube-dl zathura krita \
+	xclip dunst tmux python-pip
 
 systemctl --user enable mpd.service
 
