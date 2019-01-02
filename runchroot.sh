@@ -16,9 +16,9 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf
 echo noisy > /etc/hostname
 
 cat >> /etc/hosts << EOL
-echo "127.0.0.1 localhost
+127.0.0.1 localhost
 ::1 localhost
-127.0.1.1 noisy.localdomain noisy"
+127.0.1.1 noisy.localdomain noisy
 EOL
 
 # xorg.conf.d/ 20-nvidia.conf 50-mouse-acceleration {{{
