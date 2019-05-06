@@ -63,6 +63,7 @@ pacman -S --noconfirm \
 
 mkdir -p /usr/lib/modprobe.d
 echo blacklist nouveau > /usr/lib/modprobe.d/nvidia.conf
+echo blacklist snd_hda_* > /usr/lib/modprobe.d/intel.conf
 
 systemctl enable dhcpcd.service
 
