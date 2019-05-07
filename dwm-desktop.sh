@@ -19,7 +19,8 @@ pacman -S --noconfirm \
 	gvfs ntfs-3g lxappearance imagemagick ffmpeg  \
 	pcmanfm ffmpegthumbnailer pulseaudio \
 	libnotify youtube-dl zathura krita \
-	xclip dunst tmux python-pip
+	xclip dunst tmux python-pip \
+	noto-fonts-emoji ttf-croscore
 
 systemctl --user enable mpd.service
 
