@@ -20,7 +20,8 @@ pacman -S --noconfirm \
 	pcmanfm-gtk3 ffmpegthumbnailer pulseaudio \
 	libnotify youtube-dl zathura krita \
 	xclip dunst tmux python-pip \
-	noto-fonts-emoji ttf-croscore
+	ttf-croscore ttf-carlito ttf-caladea
+	libva-vdpau-driver
 
 systemctl --user enable mpd.service
 
