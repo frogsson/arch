@@ -17,7 +17,7 @@ pacman -S --noconfirm \
 	pavucontrol rtorrent \
 	mpv mpd ncmpcpp beets neovim \
 	gvfs ntfs-3g lxappearance imagemagick ffmpeg  \
-	pcmanfm ffmpegthumbnailer pulseaudio \
+	pcmanfm-gtk3 ffmpegthumbnailer pulseaudio \
 	libnotify youtube-dl zathura krita \
 	xclip dunst tmux python-pip \
 	noto-fonts-emoji ttf-croscore
