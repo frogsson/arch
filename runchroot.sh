@@ -67,6 +67,15 @@ echo blacklist snd_hda_* > /usr/lib/modprobe.d/intel.conf
 
 systemctl enable dhcpcd.service
 
+# systemd journal size {{{
+journald="/etc/systemd/journald.conf.d"
+mkdir -p "$journald" 
+cat > "$journald"/00-journal-size.conf << EOL
+[Journal]
+SystemMaxUse=10M
+EOL
+# }}}
+
 pacman -S --noconfirm grub
 # /etc/default/grub {{{
 cat > /etc/default/grub << EOL
