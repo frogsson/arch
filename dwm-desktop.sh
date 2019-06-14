@@ -17,13 +17,15 @@ pacman -S --noconfirm \
 	pavucontrol rtorrent feh \
 	mpv mpd ncmpcpp beets neovim \
 	gvfs ntfs-3g lxappearance imagemagick ffmpeg  \
-	pcmanfm-gtk3 ffmpegthumbnailer pulseaudio \
+	dolphin ffmpegthumbs pulseaudio \
 	libnotify youtube-dl zathura krita thunderbird \
 	xclip dunst tmux python-pip \
 	ttf-croscore ttf-carlito ttf-caladea \
 	libva-vdpau-driver \
 	hsetroot compton du ripgrep gdb-common
 
+# pcmanfm
+# pcmanfm-gtk3 ffmpegthumbnailer
 
 systemctl --user enable mpd.service
 
