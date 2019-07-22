@@ -20,9 +20,9 @@ pacman -S --noconfirm \
 	dolphin ffmpegthumbs pulseaudio \
 	libnotify youtube-dl zathura krita thunderbird \
 	xclip dunst tmux python-pip \
-	ttf-croscore ttf-carlito ttf-caladea \
+	ttf-croscore ttf-carlito ttf-caladea gnu-free-fonts ttf-dejavu \
 	libva-vdpau-driver \
-	hsetroot compton du ripgrep gdb-common
+	hsetroot compton du ripgrep gdb-common \
 
 # pcmanfm
 # pcmanfm-gtk3 ffmpegthumbnailer
